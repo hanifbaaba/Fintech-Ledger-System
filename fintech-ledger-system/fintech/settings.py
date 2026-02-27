@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-u87u*oh+ahg)0o!hz!&xi(7)e%1av#mp#mbpjxk75co1+5gghd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fintech-ledger-system.onrender.com']
 
 
 # Application definition
