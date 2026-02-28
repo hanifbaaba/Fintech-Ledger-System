@@ -16,3 +16,18 @@ class Accounts(models.Model):
 
     def __str__(self):
         return f"{self.user_uuid} - {self.balance}"
+
+class Transactions(models.Model):
+    idempotency_key = models.CharField(unique=True)
+    reference = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    STATUS_OPTIONS = (
+        ('PENDING', 'Pending'),
+        ('COMPLETED', 'Completed'),
+    )
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_OPTIONS,
+        default='PENDING'
+    )
