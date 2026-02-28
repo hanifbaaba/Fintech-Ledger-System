@@ -4,7 +4,7 @@ from djmoney.models.fields import MoneyField
 from django.conf import settings
 
 class Accounts(models.Model):
-    user_uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,)
+    user_uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False,unique=True)
     balance = MoneyField(
         max_digits=14,
         decimal_places=2,
@@ -19,7 +19,7 @@ class Accounts(models.Model):
 
 class Transactions(models.Model):
     idempotency_key = models.CharField(unique=True)
-    reference = models.TextField()
+    reference = models.TextField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     STATUS_OPTIONS = (
         ('PENDING', 'Pending'),
