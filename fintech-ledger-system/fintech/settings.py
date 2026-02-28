@@ -43,9 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
+    'djmoney',
+    'djmoney.contrib.exchange',
+    # 'corsheaders',
     # 'rest_framework_simplejwt',
+    'users',
+    'accounts',
+    'fraud',
+    'ledgers',
+    
 ]
+
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': [
