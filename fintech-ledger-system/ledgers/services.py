@@ -3,6 +3,7 @@ from decimal import Decimal
 from accounts.models import Accounts
 from accounts.models import Transactions
 from .models import LedgerEntry
+from django.db.models import Sum,F
 
 def transfer_funds(sender_id,receiver_id,amount, idempotency_key):
     if sender_id == receiver_id:
@@ -39,5 +40,7 @@ def transfer_funds(sender_id,receiver_id,amount, idempotency_key):
 
         return tx
         
-
-            
+def get_account_balance(account_id):
+    balance = Transactions.objects.filter(account=acc).aggregate(
+            total=sum(F('credit')- F('debit'))
+        ) ['total'] or 0
