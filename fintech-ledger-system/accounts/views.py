@@ -8,10 +8,10 @@ from rest_framework.permissions import IsAuthenticated
 class AccountsView(viewsets.ModelViewSet):
     queryset = Accounts.objects.all()
     # serializer_class = AccountsSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     
 
 class TransactionsView(viewsets.ModelViewSet):
     queryset = Transactions.objects.all()
     # serializer_class = TransactionsSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]

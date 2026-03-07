@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'djmoney',
     'djmoney.contrib.exchange',
     # 'corsheaders',
-    # 'rest_framework_simplejwt',
+    'rest_framework_simplejwt',
     'users',
     'accounts',
     'fraud',
@@ -54,13 +54,18 @@ INSTALLED_APPS = [
     
 ]
 
-
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
        
-#     ],
-# }
+    ],
+}
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
